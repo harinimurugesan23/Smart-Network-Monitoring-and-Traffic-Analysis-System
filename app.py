@@ -4,6 +4,7 @@ import socket
 import threading
 import time
 import datetime
+import os 
 
 app = Flask(__name__)
 
@@ -183,4 +184,9 @@ if __name__ == "__main__":
     print("  Network Monitor Dashboard")
     print("  Open: http://127.0.0.1:5000")
     print("=" * 50)
-    app.run(debug=True, use_reloader=False)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=False,
+        use_reloader=False
+        )
